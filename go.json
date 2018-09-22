@@ -1,0 +1,115 @@
+{
+	// Place your snippets for go here. Each snippet is defined under a snippet name and has a prefix, body and 
+	// description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the 
+	// same ids are connected.
+	// Example:
+	// "Print to console": {
+	// 	"prefix": "log",
+	// 	"body": [
+	// 		"console.log('$1');",
+	// 		"$2"
+	// 	],
+	// 	"description": "Log output to console"
+	// }
+
+	"main structure": {
+		"prefix": "pkg",
+		"body":[
+			"package main",
+			"$1",
+			"func init(){",
+				"\t$2",
+			"}",
+			"func main(){",
+				"\t$3",
+			"}"
+		],
+		"description": "Main structure of Go file"
+	},
+
+	"log error": {
+		"prefix": "logerror",
+		"body": [
+			"if err != nil {",
+				"\tlog.Fatal(err)",
+			"}"
+		],
+		"description": "Log fatal errors"
+	},
+
+	"pkgserver": {
+		"prefix": "package server",
+		"body": [
+			"package main",
+			"",
+			"import (",
+			"\t\"io\"",
+			"\t\"net/http\"",
+			")",
+			"",
+			"func main() {",
+			"\thttp.HandleFunc(\"/\", $1)",
+			"\thttp.Handle(\"/favicon.ico\", http.NotFoundHandler())",
+			"\thttp.ListenAndServe(\":8080\", nil)",
+			"}",
+			"",
+			"func $1(w http.ResponseWriter, req *http.Request) {",
+			"\t$2",
+			"\tw.Header().Set(\"Content-Type\", \"text/html; charset=utf-8\")",
+			"\tio.WriteString(w, $3)",
+			"}",
+		],
+		"description": "Main structure for web server"
+
+	},
+
+	"pkg-server&template":{
+		"prefix": "package server with templates",
+		"body": [
+			"package main",
+			"",
+			"import (",
+			"\t\"html/template\"",
+			"\t\"io\"",
+			"\t\"net/http\"",
+			")",
+			"",
+			"var tpl *template.Template",
+			"",
+			"func init() {",
+			"\ttpl = template.Must(template.ParseGlob(\"templates/*\"))",
+			"}",
+			"",
+			"$1",
+			"",
+			"func main() {",
+			"\thttp.HandleFunc(\"/\", ${2:foo})",
+			"\thttp.Handle(\"/favicon.ico\", http.NotFoundHandler())",
+			"\thttp.ListenAndServe(\":8080\", nil)",
+			"}",
+			"",
+			"func ${2:foo}(w http.ResponseWriter, req *http.Request) {",
+			"\t$3",
+			"\terr := tpl.ExecuteTemplate(w, \"index.gohtml\", $3)",
+			"\tif err != nil {",
+			"\t\thttp.Error(w, err.Error(), 500)",
+			"\t\tlog.Fatalln(err)",
+			"\t}",
+			"}",
+		],
+		"description": "Main structure for web server"
+	},
+
+	"errStatus":{
+		"prefix": "StatusInternalServerError",
+		"body": [
+			"if err != nil {",
+			"\thttp.Error(w, err.Error(), http.StatusInternalServerError)",
+			"\treturn",
+			"}"			
+		],
+		"description": "Catch error for Status internal server error"
+	}
+}
+
