@@ -101,8 +101,8 @@
 		"description": "Main structure for web server"
 	},
 
-	"errStatus":{
-		"prefix": "StatusInternalServerError",
+	"StatusInternalServerError":{
+		"prefix": "errStatus",
 		"body": [
 			"if err != nil {",
 			"\thttp.Error(w, err.Error(), http.StatusInternalServerError)",
@@ -110,6 +110,44 @@
 			"}"			
 		],
 		"description": "Catch error for Status internal server error"
-	}
+	},
+
+	"fmt.Fprintln()":{
+		"prefix": "fpln",
+		"body": "fmt.Fprintln(${1:w}, ${2})",
+		"description": "Fprint line"
+	},
+
+	"setCookie":{
+		"prefix": "http.SetCookie()",
+		"body": [
+			"http.SetCookie(${1:w}, &http.Cookie{",
+			"\tName:  \"${2:my-cookie}\",",
+			"\tValue: \"${3:some value}\",",
+			"})"
+			],
+		"description": "Set Cookie"
+	},
+
+	"http ResponseWriter *Request": {
+		"prefix": "wr",
+		"body": "${1:w} http.ResponseWriter, ${2:req} *http.Request",
+		"description": "Snippet for http Response"
+	},
+	"http.HandleFunc": {
+		"prefix": "hf",
+		"body": "${1:http}.HandleFunc(\"${2:/}\", ${3:handler})",
+		"description": "Snippet for http.HandleFunc()"
+	},
+	"http handler declaration": {
+		"prefix": "hand",
+		"body": "func $1(${2:w} http.ResponseWriter, ${3:req} *http.Request) {\n\t$0\n}",
+		"description": "Snippet for http handler declaration"
+	},
+	"http.Redirect": {
+		"prefix": "rd",
+		"body": "http.Redirect(${1:w}, ${2:req}, \"${3:/}\", ${4:http.StatusSeeOther})",
+		"description": "Snippet for http.Redirect()"
+	},
 }
 
