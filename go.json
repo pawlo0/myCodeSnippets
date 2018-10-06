@@ -118,8 +118,8 @@
 		"description": "Fprint line"
 	},
 
-	"setCookie":{
-		"prefix": "http.SetCookie()",
+	"http.SetCookie(){w, object}":{
+		"prefix": "setcookiefull",
 		"body": [
 			"http.SetCookie(${1:w}, &http.Cookie{",
 			"\tName:  \"${2:my-cookie}\",",
@@ -128,25 +128,14 @@
 			],
 		"description": "Set Cookie"
 	},
-
-	"http ResponseWriter *Request": {
-		"prefix": "wr",
-		"body": "${1:w} http.ResponseWriter, ${2:req} *http.Request",
-		"description": "Snippet for http Response"
-	},
-	"http.HandleFunc": {
-		"prefix": "hf",
-		"body": "${1:http}.HandleFunc(\"${2:/}\", ${3:handler})",
-		"description": "Snippet for http.HandleFunc()"
-	},
-	"http handler declaration": {
-		"prefix": "hand",
-		"body": "func $1(${2:w} http.ResponseWriter, ${3:req} *http.Request) {\n\t$0\n}",
-		"description": "Snippet for http handler declaration"
+	"http.SetCookie()":{
+		"prefix": "setcookie",
+		"body": "http.SetCookie(${1:w}, ${2:c}",
+		"description": "Set Cookie"
 	},
 	"http.Redirect": {
-		"prefix": "rd",
-		"body": "http.Redirect(${1:w}, ${2:req}, \"${3:/}\", ${4:http.StatusSeeOther})",
+		"prefix": "redirec",
+		"body": "http.Redirect(${1:w}, ${2:r}, \"${3:/}\", ${4:http.StatusSeeOther})",
 		"description": "Snippet for http.Redirect()"
 	},
 }
