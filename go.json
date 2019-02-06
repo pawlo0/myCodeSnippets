@@ -118,8 +118,8 @@
 		"description": "Fprint line"
 	},
 
-	"setCookie":{
-		"prefix": "http.SetCookie()",
+	"http.SetCookie(){w, object}":{
+		"prefix": "setcookiefull",
 		"body": [
 			"http.SetCookie(${1:w}, &http.Cookie{",
 			"\tName:  \"${2:my-cookie}\",",
@@ -128,6 +128,7 @@
 			],
 		"description": "Set Cookie"
 	},
+<<<<<<< HEAD
 
 	"http ResponseWriter *Request": {
 		"prefix": "wr",
@@ -146,6 +147,15 @@
 	},
 	"http.Redirect": {
 		"prefix": "rd",
+=======
+	"http.SetCookie()":{
+		"prefix": "setcookie",
+		"body": "http.SetCookie(${1:w}, ${2:c}",
+		"description": "Set Cookie"
+	},
+	"http.Redirect": {
+		"prefix": "redirec",
+>>>>>>> 5c94a8c994d7e4ee266928adb40584dc84a67f36
 		"body": "http.Redirect(${1:w}, ${2:r}, \"${3:/}\", ${4:http.StatusSeeOther})",
 		"description": "Snippet for http.Redirect()"
 	},
