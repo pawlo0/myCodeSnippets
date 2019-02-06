@@ -54,7 +54,7 @@
 			"\thttp.ListenAndServe(\":8080\", nil)",
 			"}",
 			"",
-			"func $1(w http.ResponseWriter, req *http.Request) {",
+			"func $1(w http.ResponseWriter, r *http.Request) {",
 			"\t$2",
 			"\tw.Header().Set(\"Content-Type\", \"text/html; charset=utf-8\")",
 			"\tio.WriteString(w, $3)",
@@ -89,7 +89,7 @@
 			"\thttp.ListenAndServe(\":8080\", nil)",
 			"}",
 			"",
-			"func ${2:foo}(w http.ResponseWriter, req *http.Request) {",
+			"func ${2:foo}(w http.ResponseWriter, r *http.Request) {",
 			"\t$3",
 			"\terr := tpl.ExecuteTemplate(w, \"index.gohtml\", $3)",
 			"\tif err != nil {",
@@ -131,7 +131,7 @@
 
 	"http ResponseWriter *Request": {
 		"prefix": "wr",
-		"body": "${1:w} http.ResponseWriter, ${2:req} *http.Request",
+		"body": "${1:w} http.ResponseWriter, ${2:r} *http.Request",
 		"description": "Snippet for http Response"
 	},
 	"http.HandleFunc": {
@@ -141,12 +141,12 @@
 	},
 	"http handler declaration": {
 		"prefix": "hand",
-		"body": "func $1(${2:w} http.ResponseWriter, ${3:req} *http.Request) {\n\t$0\n}",
+		"body": "func $1(${2:w} http.ResponseWriter, ${3:r} *http.Request) {\n\t$0\n}",
 		"description": "Snippet for http handler declaration"
 	},
 	"http.Redirect": {
 		"prefix": "rd",
-		"body": "http.Redirect(${1:w}, ${2:req}, \"${3:/}\", ${4:http.StatusSeeOther})",
+		"body": "http.Redirect(${1:w}, ${2:r}, \"${3:/}\", ${4:http.StatusSeeOther})",
 		"description": "Snippet for http.Redirect()"
 	},
 }
