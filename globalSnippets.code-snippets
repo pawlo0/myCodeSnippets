@@ -1,39 +1,54 @@
 {
-	// Place your global snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and 
-	// description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope 
-	// is left empty or omitted, the snippet gets applied to all languages. The prefix is what is 
-	// used to trigger the snippet and the body will be expanded and inserted. Possible variables are: 
-	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. 
-	// Placeholders with the same ids are connected.
-	// Example:
-	// "Print to console": {
-	// 	"scope": "javascript,typescript",
-	// 	"prefix": "log",
-	// 	"body": [
-	// 		"console.log('$1');",
-	// 		"$2"
-	// 	],
-	// 	"description": "Log output to console"
-	// }
+  // Place your global snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and
+  // description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope
+  // is left empty or omitted, the snippet gets applied to all languages. The prefix is what is
+  // used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+  // $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders.
+  // Placeholders with the same ids are connected.
+  // Example:
+  // "Print to console": {
+  // 	"scope": "javascript,typescript",
+  // 	"prefix": "log",
+  // 	"body": [
+  // 		"console.log('$1');",
+  // 		"$2"
+  // 	],
+  // 	"description": "Log output to console"
+  // }
 
-	"simpleReactClassCompoment": {
-		"scope": "javascript,javascriptreact",
-		"prefix": "rcs",
-		"body": [
-			"class ${1:${TM_FILENAME_BASE}} extends React.Component {",
-			"\tconstructor(props) {",
-			"\t\tsuper(props)",
-			"\t}",
-		  	"\trender() {",
-		  	"\t\treturn (",
-		  	"\t\t\t<div>",
-		  	"\t\t\t\t$0",
-		  	"\t\t\t</div>",
-		  	"\t\t)",
-		  	"\t}",
-		  	"}",
-		  	""
-		],
-		"description": "Creates a simple React component class"
-	  }
+  "simpleReactClassCompoment": {
+    "scope": "javascript,javascriptreact",
+    "prefix": "rcs",
+    "body": [
+      "class ${1:${TM_FILENAME_BASE}} extends React.Component {",
+      "\tconstructor(props) {",
+      "\t\tsuper(props)",
+      "\t\tthis.state = {",
+      "\t\t\t$2",
+      "\t\t}",
+      "\t}",
+      "\trender() {",
+      "\t\treturn (",
+      "\t\t\t<div>",
+      "\t\t\t\t$0",
+      "\t\t\t</div>",
+      "\t\t)",
+      "\t}",
+      "}",
+      ""
+    ],
+    "description": "Creates a simple React component class"
+  },
+  "componentWillMount": {
+    "scope": "javascript,javascriptreact",
+    "prefix": "cwm",
+    "body": ["componentWillMount() {", "\t$0", "}"],
+    "description": "ComponentWillMount inside component class"
+  },
+  "componentDidMount": {
+    "scope": "javascript,javascriptreact",
+    "prefix": "cdm",
+    "body": ["componentDidMount() {", "\t$0", "}"],
+    "description": "ComponentDidMount inside component class"
+  }
 }
