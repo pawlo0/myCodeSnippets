@@ -50,5 +50,23 @@
     "prefix": "cdm",
     "body": ["componentDidMount() {", "\t$0", "}"],
     "description": "ComponentDidMount inside component class"
+  },
+  "componentWillUpdate": {
+    "scope": "javascript,javascriptreact",
+    "prefix": "cwup",
+    "body": ["componentWillUpdate() {", "\t$0", "}"],
+    "description": "ComponentWillUpdate inside component class"
+  },
+  "componentWillReceiveProps": {
+    "scope": "javascript,javascriptreact",
+    "prefix": "cwr",
+    "body": ["componentWillReceiveProps(nextProps) {", "\t$0", "}"],
+    "description": "ComponentWillUpdate inside component class"
+  },
+  "componentDidUpdate": {
+    "scope": "javascript,javascriptreact",
+    "prefix": "cdup",
+    "body": ["componentDidUpdate() {", "\t$0", "}"],
+    "description": "ComponentWillUpdate inside component class"
   }
 }
