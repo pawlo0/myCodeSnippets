@@ -68,5 +68,11 @@
     "prefix": "cdup",
     "body": ["componentDidUpdate() {", "\t$0", "}"],
     "description": "ComponentWillUpdate inside component class"
+  },
+  "shouldComponentUpdate": {
+    "scope": "javascript,javascriptreact",
+    "prefix": "scu",
+    "body": ["shouldComponentUpdate(nextProps, nextState) {", "\t$0", "}"],
+    "description": "shouldComponentUpdate inside component class"
   }
 }
