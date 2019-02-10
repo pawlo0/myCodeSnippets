@@ -74,5 +74,15 @@
     "prefix": "scu",
     "body": ["shouldComponentUpdate(nextProps, nextState) {", "\t$0", "}"],
     "description": "shouldComponentUpdate inside component class"
+  },
+  "handleChange": {
+    "scope": "javascript,javascriptreact",
+    "prefix": "rhc",
+    "body": [
+      "handleChange(e){",
+      "\tthis.setState({${1:input}: e.target.value});",
+      "}"
+    ],
+    "description": "handleChange method for set state for input fields"
   }
 }
