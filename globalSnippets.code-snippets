@@ -84,5 +84,13 @@
       "}"
     ],
     "description": "handleChange method for set state for input fields"
+  },
+  "handleChangeInput": {
+    "scope": "javascript,javascriptreact",
+    "prefix": "rhci",
+    "body": [
+      "<input onChange={this.handleChange} value={this.state.${1:input}}/>"
+    ],
+    "description": "JSX for input fields with handleChange"
   }
 }
