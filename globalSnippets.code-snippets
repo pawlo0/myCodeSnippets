@@ -92,5 +92,97 @@
       "<input onChange={this.handleChange} value={this.state.${1:input}}/>"
     ],
     "description": "JSX for input fields with handleChange"
+  },
+  "reduxAction": {
+    "scope": "javascript,javascriptreact",
+    "prefix": "rxa",
+    "body": [
+      "const ${1:ACTION} = '${1:ACTION}';",
+      "",
+      "const ${2:actionFunction} = (${3:payload}) => {",
+      "\treturn {",
+      "\t\ttype: ${1:ACTION},",
+      "\t\t${3:payload}",
+      "\t}",
+      "};",
+      ""
+    ],
+    "description": "Redux Action"
+  },
+  "reduxReducerArray": {
+    "scope": "javascript,javascriptreact",
+    "prefix": "rxra",
+    "body": [
+      "const ${1:name}Reducer = (state = [], { type, ${3:payload} }) => {",
+      "\tswitch (type) {",
+      "\t\tcase ${4:ACTION}:",
+      "\t\t\treturn [ ...state, ${3:payload} ]",
+      "\t\tdefault:",
+      "\t\t\treturn state",
+      "\t}",
+      "}",
+      ""
+    ],
+    "description": "Redux Reducer with state being an Array"
+  },
+  "reduxReducerObject": {
+    "scope": "javascript,javascriptreact",
+    "prefix": "rxro",
+    "body": [
+      "const ${1:name}Reducer = (state = {}, { type, payload }) => {",
+      "\tswitch (type) {",
+      "\t\tcase ${4:ACTION}:",
+      "\t\t\treturn { ...state, ...payload }",
+      "\t\tdefault:",
+      "\t\t\treturn state",
+      "\t}",
+      "}",
+      ""
+    ],
+    "description": "Redux Reducer with state being an Object"
+  },
+  "reduxCreateStore": {
+    "scope": "javascript,javascriptreact",
+    "prefix": "rxstore",
+    "body": "const store = Redux.createStore(${1:name}Reducer);",
+    "description": "Redux Create Store"
+  },
+  "mapStateToProps_and_mapDispatchToProps": {
+    "scope": "javascript, javascriptreact",
+    "prefix": "rmap",
+    "body": [
+      "const mapStateToProps = (state) => {",
+      "\treturn {${1:payload}s: state}",
+      "};",
+      "",
+      "const mapDispatchToProps = (dispatch) => {",
+      "\treturn {",
+      "\t\t${2:objectActionName}: (${1:payload}) => dispatch(${3:ActionFunction}(${1:payload}))",
+      "\t}",
+      "};",
+      "",
+      "const Provider = ReactRedux.Provider;",
+      "const connect = ReactRedux.connect;",
+      "",
+      "const Container = connect(mapStateToProps, mapDispatchToProps)(${4:MyComponent})",
+      "",
+      "class AppWrapper extends React.Component {",
+      "\trender() {",
+      "\t\treturn (",
+      "\t\t\t<Provider store={store}>",
+      "\t\t\t\t<Container />",
+      "\t\t\t</Provider>",
+      "\t\t);",
+      "\t}",
+      "}",
+      ""
+    ],
+    "description": "Connect Redux to React by mapStateToProps and mapDispatchToProps"
+  },
+  "reactDOM": {
+    "scope": "javascript,javascriptreact",
+    "prefix": "rdom",
+    "body": "ReactDOM.render(<${1:AppWrapper} />,document.getElementById('${2:App}'));",
+    "description": "Redux DOM Render"
   }
 }
