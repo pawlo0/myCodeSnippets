@@ -184,5 +184,39 @@
     "prefix": "rdom",
     "body": "ReactDOM.render(<${1:AppWrapper} />,document.getElementById('${2:App}'));",
     "description": "Redux DOM Render"
+  },
+  "constFunctionSimple": {
+    "prefix": "rfuncs",
+    "body": ["const ${1:name} = (${2:props}) => (", "  ${3}", ")", ""],
+    "description": "Creates a named function in ES7 syntax for React without return"
+  },
+  "namedFunction": {
+    "prefix": "rfunc",
+    "body": [
+      "const ${1:name} = (${2:props}) => {",
+      "\treturn (",
+      "\t\t${3}",
+      "\t)",
+      "}",
+      ""
+    ],
+    "description": "Creates a named function in ES7 syntax for React"
+  },
+  "exportDefaultFunctionSimple": {
+    "prefix": "edfs",
+    "body": ["export default (${1:props}) => (", "  $0", ")", ""],
+    "description": "Export default function in ES7 syntax for React"
+  },
+  "exportDefaultFunction": {
+    "prefix": "edf",
+    "body": [
+      "export default (${1:params}) => {",
+      "\treturn (",
+      "\t\t$0",
+      "\t)",
+      "}",
+      ""
+    ],
+    "description": "Export default function in ES7 syntax for React"
   }
 }
